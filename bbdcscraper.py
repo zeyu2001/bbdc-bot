@@ -90,12 +90,12 @@ class BBDCScraper:
 
             try:
                 wait.until(EC.alert_is_present())
+                alert_obj = self.browser.switch_to.alert
+                alert_obj.accept()
 
             except TimeoutException:
                 print("[INFO] No alert present. Proceeding to view slots.")
-
-            alert_obj = self.browser.switch_to.alert
-            alert_obj.accept()
+            
             wait.until(EC.visibility_of_element_located((By.NAME, "tipDiv1")))
 
             results = []
