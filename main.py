@@ -16,6 +16,7 @@ try:
     telegram_id = int(config['telegram']['user_id'])
     bbdc_username = config['bbdc']['username']
     bbdc_password = config['bbdc']['password']
+    bbdc_id = config['bbdc']['acct_id']
 
 except configparser.ParsingError:
     print("CONFIG ERROR: Cannot parse config.ini.")
@@ -32,9 +33,6 @@ except configparser.Error:
 
 def sigterm_handler(signum, frame):
     print("EXITING...")
-    
-    if callbacks.bbdc_scraper:
-        callbacks.bbdc_scraper.browser.quit()
 
     for chat_id, bot in callbacks.my_bots.items():
         bot.send_message(

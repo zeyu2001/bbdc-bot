@@ -4,7 +4,7 @@ import datetime
 import pytz
 
 from bbdcscraper import BBDCScraper
-from main import bbdc_username, bbdc_password
+from main import bbdc_username, bbdc_password, bbdc_id
 
 # For handling Heroku cycling
 my_bots = {}
@@ -47,7 +47,7 @@ def search_slots(context: telegram.ext.CallbackContext):
     hour = now.hour
 
     try:
-        bbdc_scraper.login(bbdc_username, bbdc_password)
+        bbdc_scraper.login(bbdc_username, bbdc_password, bbdc_id)
 
     except Exception as e:
         print(e)
@@ -91,6 +91,11 @@ def search_slots(context: telegram.ext.CallbackContext):
         print("[INFO] Sent available slots.")
 
     else:
+        bot.send_message(
+            chat_id=job.context['chat_id'],
+            text='No slots now.',
+            parse_mode=telegram.ParseMode.HTML
+        )
         print("[INFO] Nothing to send.")
 
 
