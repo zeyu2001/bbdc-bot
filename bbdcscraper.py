@@ -39,7 +39,6 @@ class BBDCScraper:
             raise RuntimeError("LOGIN ERROR: Unable to login, please check credentials.")
 
         self.acct_id = acct_id
-        print(r.text)
 
         print("[INFO] Logged in successfully.")
 
@@ -71,9 +70,6 @@ class BBDCScraper:
             'optVenue': '1'
         }
         r = self.session.post(BOOKING_URL, data=data, proxies=PROXY_DICT)
-        print(self.session.cookies.get_dict())
-        print(r.request.body)
-        print(r.text)
 
         slots = re.findall(DETAILS_REGEX, r.text)
 
