@@ -4,7 +4,7 @@ Telegram bot for fetching Bukit Batok Driving Centre practical slots.
 
 ## Usage
 
-You need to create a Telegram bot for yourself. Refer to the Telegram API [documentation](https://core.telegram.org/bots) for moreinformation.
+You need to create a Telegram bot for yourself. Refer to the Telegram API [documentation](https://core.telegram.org/bots) for more information.
 
 Edit the [`config.ini`](config.ini) file.
 
